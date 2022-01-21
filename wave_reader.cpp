@@ -123,8 +123,9 @@ std::vector<Sample> WaveReader::GetSamples(unsigned quantity, bool &stop) {
     }
 
     std::vector<Sample> samples;
+	samples.resize(quantity);
     for (unsigned i = 0; i < quantity; i++) {
-        samples.push_back(Sample(&data[bytesPerSample * i], header.channels, header.bitsPerSample));
+        samples[i] = Sample(&data[bytesPerSample * i], header.channels, header.bitsPerSample);
     }
     return samples;
 }
